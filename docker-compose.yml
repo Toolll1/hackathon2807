@@ -1,0 +1,26 @@
+services:
+
+  fintech-server:
+    build: ./
+    image: fintech-server
+    container_name: fintech-server
+    ports:
+      - "8080:8080"
+    depends_on:
+      - fintech-db
+    environment:
+      - HACK_DB_NAME=fintech
+      - HACK_USER=root
+      - HACK_PASSWORD=root
+      - HACK_DB_HOST=db
+      - HACK_DB_PORT=5432
+
+  fintech-db:
+    image: postgres:14-alpine
+    container_name: hack-db
+    ports:
+      - "6541:5432"
+    environment:
+      - POSTGRES_DB=fintech
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root

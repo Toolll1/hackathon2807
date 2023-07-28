@@ -1,4 +1,4 @@
-package org.example.exceptions;
+package ru.hackathon2807.exceptions;
 
 public class ConflictException extends RuntimeException {
 
