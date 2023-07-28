@@ -1,9 +1,9 @@
 package ru.hackathon2807.services.impl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.annotation.Validated;
 import ru.hackathon2807.adapters.DateTimeAdapter;
 import ru.hackathon2807.dto.UserCreateDto;
 import ru.hackathon2807.dto.UserReplyDto;
@@ -14,9 +14,11 @@ import ru.hackathon2807.models.User;
 import ru.hackathon2807.repositories.UserRepository;
 import ru.hackathon2807.services.UserService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @Slf4j
-@Validated
 @Transactional
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -31,6 +33,12 @@ public class UserServiceImpl implements UserService {
         User newUser = validation(user, dto);
 
         return UserMapper.objectToReplyDto(repository.save(newUser));
+    }
+
+    @Override
+    public List<UserReplyDto> getUsers(Integer from, Integer size) {
+
+        return repository.findAll(PageRequest.of(from / size, size)).stream().map(UserMapper::objectToReplyDto).collect(Collectors.toList());
     }
 
     @Override

@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import ru.hackathon2807.dto.UserReplyDto;
 import ru.hackathon2807.services.UserService;
 
+import javax.validation.constraints.Min;
+import java.util.List;
+
 @Slf4j
 @Validated
 @RestController
@@ -23,6 +26,15 @@ public class UserControllerAdmin {
         log.info("Received a request to search user for id {}", userId);
 
         return service.getUser(userId);
+    }
+
+    @GetMapping
+    public List<UserReplyDto> getUsers(@RequestParam(value = "from", defaultValue = "0") @Min(0) Integer from,
+                                       @RequestParam(value = "size", defaultValue = "10") @Min(1) Integer size) {
+
+        log.info("Received a request to search all users}");
+
+        return service.getUsers(from, size);
     }
 
     @DeleteMapping("/{userId}")

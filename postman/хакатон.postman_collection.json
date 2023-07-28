@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "7323b352-568b-403a-aec8-a6ec4e6a490d",
+		"name": "хакатон",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26121869"
+	},
+	"item": [
+		{
+			"name": "создание пользователя",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"lastName\": \"Иванов\",\r\n    \"firstName\": \"Иван\",\r\n    \"patronymic\": \"Иванович\",\r\n    \"email\": \"user@user.com\",\r\n    \"passportSeries\": \"0310\",\r\n    \"passportNumber\": \"351351\",\r\n    \"passportIssued\": \"ОУФМС\",\r\n    \"passportDate\": \"10.10.2020\",\r\n    \"passportKp\": \"230003\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "создание пользователя #2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"lastName\": \"Ильичевский\",\r\n    \"firstName\": \"Илья\",\r\n    \"patronymic\": \"Ильич\",\r\n    \"email\": \"user2@user.com\",\r\n    \"passportSeries\": \"1111\",\r\n    \"passportNumber\": \"111111\",\r\n    \"passportIssued\": \"ОУФМС по КК\",\r\n    \"passportDate\": \"10.10.2021\",\r\n    \"passportKp\": \"231003\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "поиск пользователя (admin)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/users/admin/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"admin",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "поиск списка пользователей (admin)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "from",
+						"value": "0",
+						"type": "text"
+					},
+					{
+						"key": "size",
+						"value": "10",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/users/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "поиск пользователя (private)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Sharer-Owner-Id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "изменение данных пользователя",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "X-Sharer-Owner-Id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"lastName\": \"Петров\",\r\n    \"firstName\": \"Петр\",\r\n    \"patronymic\": \"Петрович\",\r\n    \"passportSeries\": \"3030\",\r\n    \"passportNumber\": \"303030\",\r\n    \"passportIssued\": \"МВД\",\r\n    \"passportDate\": \"11.11.2011\",\r\n    \"passportKp\": \"230000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "удаление пользователя (admin)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/users/admin/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"admin",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "удаление пользователя (private)",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Sharer-Owner-Id",
+						"value": "2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/users/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,8 +1,11 @@
 package ru.hackathon2807.models;
 
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data

@@ -1,6 +1,5 @@
 package ru.hackathon2807.controllers.pub;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -9,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.hackathon2807.dto.UserCreateDto;
 import ru.hackathon2807.dto.UserReplyDto;
 import ru.hackathon2807.services.UserService;
+
+import javax.validation.Valid;
 
 @Slf4j
 @Validated
