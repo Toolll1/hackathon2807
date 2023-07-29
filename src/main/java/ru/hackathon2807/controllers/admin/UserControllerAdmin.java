@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ru.hackathon2807.dto.TelephoneDto;
 import ru.hackathon2807.dto.UserReplyDto;
 import ru.hackathon2807.services.UserService;
 
@@ -19,6 +20,14 @@ import java.util.List;
 public class UserControllerAdmin {
 
     private final UserService service;
+
+    @GetMapping("/telephone")
+    public UserReplyDto getUserByTelephone (@RequestBody TelephoneDto dto) {
+
+        log.info("Received a request to search user for telephone {}", dto.getTelephone());
+
+        return service.getUserByTelephone(dto.getTelephone());
+    }
 
     @GetMapping("/{userId}")
     public UserReplyDto getUser(@PathVariable Long userId) {

@@ -28,6 +28,8 @@ public class User {
     private  String patronymic;
     @Column(name = "email", nullable = false, length = 320, unique = true)
     private  String email;
+    @Column(name = "telephone", nullable = false, length = 11, unique = true)
+    private  String telephone;
     @Column(name = "passport_series", nullable = false, length = 4)
     private  String passportSeries;
     @Column(name = "passport_number", nullable = false, length = 6)

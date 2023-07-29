@@ -1,6 +1,5 @@
 package ru.hackathon2807.services.impl;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,10 +14,10 @@ import ru.hackathon2807.repositories.UserRepository;
 import ru.hackathon2807.services.UserService;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@Slf4j
 @Transactional
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -39,6 +38,18 @@ public class UserServiceImpl implements UserService {
     public List<UserReplyDto> getUsers(Integer from, Integer size) {
 
         return repository.findAll(PageRequest.of(from / size, size)).stream().map(UserMapper::objectToReplyDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public UserReplyDto getUserByTelephone(String telephone) {
+
+        Optional<User> user = repository.findByTelephone(telephone);
+
+        if (user.isPresent()){
+            return UserMapper.objectToReplyDto(user.get());
+        } else {
+            return UserReplyDto.builder().build();
+        }
     }
 
     @Override
@@ -68,6 +79,13 @@ public class UserServiceImpl implements UserService {
 
     private User validation(User user, UserCreateDto dto) {
 
+        if (dto.getTelephone() != null && !dto.getTelephone().isBlank() && !dto.getTelephone().isEmpty()) {
+            if (dto.getTelephone().length() == 11) {
+                user.setTelephone(dto.getTelephone());
+            } else {
+                throw new ConflictException("incorrect telephone");
+            }
+        }
         if (dto.getEmail() != null && !dto.getEmail().isBlank() && !dto.getEmail().isEmpty()) {
             if (!dto.getEmail().equals(user.getEmail())) {
                 throw new ConflictException("it is forbidden to change email");

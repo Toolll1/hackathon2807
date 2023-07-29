@@ -4,15 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.hackathon2807.models.Faculty;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
 @Builder
-public class UserReplyDto {
+public class UniversityCreateDto {
 
-    private final String fullName;
-    private final String email;
-    private  final String telephone;
-    private final String passport;
+    private  String name;
+    private List<Faculty> faculties;
 }

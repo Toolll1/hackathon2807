@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
 @Builder
-public class UserReplyDto {
+public class TelephoneDto {
 
-    private final String fullName;
-    private final String email;
     private  final String telephone;
-    private final String passport;
 }

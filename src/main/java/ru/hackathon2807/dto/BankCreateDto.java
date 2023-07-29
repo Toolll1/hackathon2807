@@ -5,14 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
 @Builder
-public class UserReplyDto {
+public class BankCreateDto {
 
-    private final String fullName;
-    private final String email;
-    private  final String telephone;
-    private final String passport;
+    @NotBlank
+    @Size(min = 2, max = 320)
+    private final String name;
 }

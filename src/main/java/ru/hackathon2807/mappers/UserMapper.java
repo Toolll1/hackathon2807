@@ -14,6 +14,7 @@ public class UserMapper {
         return UserCreateDto.builder()
                 .id(user.getId())
                 .email(user.getEmail())
+                .telephone(user.getTelephone())
                 .lastName(user.getLastName())
                 .firstName(user.getFirstName())
                 .patronymic(user.getPatronymic())
@@ -41,6 +42,7 @@ public class UserMapper {
         return UserReplyDto.builder()
                 .fullName(fullName.toString())
                 .email(user.getEmail())
+                .telephone(user.getTelephone())
                 .passport(passport)
                 .build();
     }
@@ -50,6 +52,7 @@ public class UserMapper {
         return User.builder()
                 .id(dto.getId())
                 .email(dto.getEmail())
+                .telephone(dto.getTelephone())
                 .lastName(dto.getLastName())
                 .firstName(dto.getFirstName())
                 .patronymic(dto.getPatronymic())

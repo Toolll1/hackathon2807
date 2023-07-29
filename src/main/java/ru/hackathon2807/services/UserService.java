@@ -16,4 +16,6 @@ public interface UserService {
     UserReplyDto updateUser(UserCreateDto dto, Long userId);
 
     List<UserReplyDto> getUsers(Integer from, Integer size);
+
+    UserReplyDto getUserByTelephone(String telephone);
 }
