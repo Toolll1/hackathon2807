@@ -23,4 +23,7 @@ public class DebitCard {
     private final String name;
     @Column(name = "description", nullable = false, length = 1000)
     private final String description;
+    @OneToOne
+    @JoinColumn(name = "bank_id")
+    private Bank bank;
 }

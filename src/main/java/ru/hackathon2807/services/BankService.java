@@ -4,6 +4,7 @@ import ru.hackathon2807.dto.BankCreateDto;
 import ru.hackathon2807.dto.CreditDto;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BankService {
     BankCreateDto createBank(BankCreateDto dto);
@@ -17,4 +18,6 @@ public interface BankService {
     List<BankCreateDto> getBanks(Integer from, Integer size);
 
     List<CreditDto> getCredits(Integer from, Integer size);
+
+    Map<CreditDto, List<Object>> getCreditsApplication();
 }

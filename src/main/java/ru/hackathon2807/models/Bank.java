@@ -21,4 +21,6 @@ public class Bank {
     private final Long id;
     @Column(name = "bank_name", nullable = false, length = 320)
     private String name;
+    @Column(name = "logo")
+    private String logo;
 }

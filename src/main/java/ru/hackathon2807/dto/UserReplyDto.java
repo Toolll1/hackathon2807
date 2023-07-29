@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class UserReplyDto {
 
     private final String fullName;
+    private final String dateOfBird;
     private final String email;
     private  final String telephone;
     private final String passport;

@@ -11,6 +11,7 @@ public class BankMapper {
 
         return BankCreateDto.builder()
                 .name(bank.getName())
+                .logo(bank.getLogo())
                 .build();
     }
 
@@ -18,6 +19,7 @@ public class BankMapper {
 
         return Bank.builder()
                 .name(dto.getName())
+                .logo(dto.getLogo())
                 .build();
     }
 }

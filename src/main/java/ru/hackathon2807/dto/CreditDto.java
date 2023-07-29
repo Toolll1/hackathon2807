@@ -18,4 +18,5 @@ public class CreditDto {
     private final Integer maxTern;
     private final Float interestRate;
     private String bank;
+    private String logo;
 }

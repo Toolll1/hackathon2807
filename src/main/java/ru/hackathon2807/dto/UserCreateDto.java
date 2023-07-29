@@ -25,6 +25,9 @@ public class UserCreateDto {
     private final String firstName;
     @Size(min = 2, max = 100)
     private final String patronymic;
+    @NotBlank
+    @Size(min = 10, max = 10)
+    private final String dateOfBird;
     @Email
     @NotBlank
     @Size(min = 6, max = 320)

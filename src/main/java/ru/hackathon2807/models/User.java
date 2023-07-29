@@ -26,6 +26,8 @@ public class User {
     private  String firstName;
     @Column(name = "patronymic", length = 100)
     private  String patronymic;
+    @Column(name = "date_of_bird")
+    private  LocalDate dateOfBird;
     @Column(name = "email", nullable = false, length = 320, unique = true)
     private  String email;
     @Column(name = "telephone", nullable = false, length = 11, unique = true)

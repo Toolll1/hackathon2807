@@ -18,6 +18,7 @@ public class UserMapper {
                 .lastName(user.getLastName())
                 .firstName(user.getFirstName())
                 .patronymic(user.getPatronymic())
+                .dateOfBird(DateTimeAdapter.dateToString(user.getDateOfBird()))
                 .passportSeries(user.getPassportSeries())
                 .passportNumber(user.getPassportNumber())
                 .passportIssued(user.getPassportIssued())
@@ -41,6 +42,7 @@ public class UserMapper {
 
         return UserReplyDto.builder()
                 .fullName(fullName.toString())
+                .dateOfBird(DateTimeAdapter.dateToString(user.getDateOfBird()))
                 .email(user.getEmail())
                 .telephone(user.getTelephone())
                 .passport(passport)
@@ -56,6 +58,7 @@ public class UserMapper {
                 .lastName(dto.getLastName())
                 .firstName(dto.getFirstName())
                 .patronymic(dto.getPatronymic())
+                .dateOfBird(DateTimeAdapter.stringToDate(dto.getDateOfBird()))
                 .passportSeries(dto.getPassportSeries())
                 .passportNumber(dto.getPassportNumber())
                 .passportIssued(dto.getPassportIssued())

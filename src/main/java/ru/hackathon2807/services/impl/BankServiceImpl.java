@@ -6,17 +6,19 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.hackathon2807.dto.BankCreateDto;
+import ru.hackathon2807.dto.CreditCardDto;
 import ru.hackathon2807.dto.CreditDto;
 import ru.hackathon2807.exceptions.ConflictException;
 import ru.hackathon2807.exceptions.ObjectNotFoundException;
-import ru.hackathon2807.mappers.BankMapper;
-import ru.hackathon2807.mappers.CreditMapper;
+import ru.hackathon2807.mappers.*;
 import ru.hackathon2807.models.Bank;
-import ru.hackathon2807.repositories.BankRepository;
-import ru.hackathon2807.repositories.CreditRepository;
+import ru.hackathon2807.repositories.*;
 import ru.hackathon2807.services.BankService;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,7 +28,26 @@ public class BankServiceImpl implements BankService {
 
     private final BankRepository bankRepository;
     private final CreditRepository creditRepository;
+    private final CreditCardRepository creditCardRepository;
+    private final DebitCardRepository debitCardRepository;
+    private final InsuranceRepository insuranceRepository;
     private final BankMapper bankMapper;
+
+    @Override
+    public Map<CreditDto, List<Object>> getCreditsApplication() {
+
+        Map<CreditDto, List<Object>> result = new HashMap<>();
+
+        for (CreditDto credit : getCredits(0, 10)) {
+            List<Object> cross = new ArrayList<>();
+            cross.add(CreditCardMapper.objectToDto(creditCardRepository.findByBankName(credit.getBank())));
+            cross.add(DebitCardMapper.objectToDto(debitCardRepository.findByBankName(credit.getBank())));
+            cross.add(InsuranceMapper.objectToDto(insuranceRepository.findByBankName(credit.getBank())));
+            result.put(credit, cross);
+        }
+
+        return result;
+    }
 
     @Override
     public List<CreditDto> getCredits(Integer from, Integer size) {

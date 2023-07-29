@@ -17,6 +17,7 @@ public class CreditMapper {
                 .maxTern(credit.getMaxTern())
                 .interestRate(credit.getInterestRate())
                 .bank(credit.getBank().getName())
+                .logo(credit.getBank().getLogo())
                 .build();
     }
     }
