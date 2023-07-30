@@ -15,5 +15,7 @@ import java.util.List;
 public class UniversityCreateDto {
 
     private  String name;
+    private  String description;
+    private String logo;
     private List<Faculty> faculties;
 }

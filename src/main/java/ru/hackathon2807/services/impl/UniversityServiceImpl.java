@@ -61,6 +61,8 @@ public class UniversityServiceImpl implements UniversityService {
     @Override
     public List<UniversityCreateDto> getUniversitys(Integer from, Integer size) {
 
+        System.out.println(universityRepository.findAll());
+
         return universityRepository.findAll(PageRequest.of(from / size, size)).stream().map(UniversityMapper::objectToDto).collect(Collectors.toList());
     }
 

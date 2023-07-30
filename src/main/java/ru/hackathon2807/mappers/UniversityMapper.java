@@ -11,6 +11,8 @@ public class UniversityMapper {
 
         return UniversityCreateDto.builder()
                 .name(university.getName())
+                .description(university.getDescription())
+                .logo(university.getLogo())
                 .faculties(university.getFaculties())
                 .build();
     }
@@ -19,6 +21,8 @@ public class UniversityMapper {
 
         return University.builder()
                 .name(dto.getName())
+                .description(dto.getDescription())
+                .logo(dto.getLogo())
                 .faculties(dto.getFaculties())
                 .build();
     }

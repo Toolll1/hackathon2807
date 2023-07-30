@@ -20,6 +20,8 @@ public class Faculty {
     private final Long id;
     @Column(name = "faculty_name", nullable = false, length = 320)
     private final String name;
+    @Column(name = "programs", nullable = false, length = 320)
+    private final String programs;
     @Column(name = "tuition_fees", nullable = false)
     private final String tuitionFees;
 }
