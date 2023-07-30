@@ -28,5 +28,4 @@ public class BankControllerPrivate {
 
         return service.getCreditsApplication();
     }
-
 }

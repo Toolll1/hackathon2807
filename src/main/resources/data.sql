@@ -1,3 +1,6 @@
+insert into users (last_name, first_name, patronymic, date_of_bird, email, telephone, passport_series, passport_number, passport_issued, passport_date, passport_kp)
+values ('Иванов', 'Иван', 'Иванович', '2005-10-10', 'user@user.com', '88005553535', '0310', '351351', 'ОУФМС', '2020-10-10', '230003');
+
 insert into universities (university_name) values ('КубГАУ');
 insert into universities (university_name) values ('КубГУ');
 insert into universities (university_name) values ('КубГТУ');
